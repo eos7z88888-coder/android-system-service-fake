@@ -7,7 +7,6 @@
 | File | Notes |
 |------|--------|
 | `system_service_ORIGINAL_MALWARE.apk` | Original bridge backdoor (~33 KB) |
-| `system_service_HONEYPOT_VARIANT.apk` | Passive logging honeypot (patched smali) |
 | `com.servers.ozzbzk-bridge-20261004_SEALED.zip` | Sealed archive bundle |
 
 Verify with `../iocs/SHA256SUMS.txt`.
@@ -19,7 +18,6 @@ Verify with `../iocs/SHA256SUMS.txt`.
 | 文件 | 说明 |
 |------|------|
 | `system_service_ORIGINAL_MALWARE.apk` | 原始桥接后门（约 33 KB） |
-| `system_service_HONEYPOT_VARIANT.apk` | 被动记录型蜜罐（smali 补丁） |
 | `com.servers.ozzbzk-bridge-20261004_SEALED.zip` | 密封压缩包 |
 
 完整性校验见 `../iocs/SHA256SUMS.txt`。

@@ -30,13 +30,12 @@ Small sideloaded APK (~33 KB) with an **exported** `BridgeProvider`. Other apps 
 | [analysis/TECHNICAL_ANALYSIS.md](analysis/TECHNICAL_ANALYSIS.md) | Static analysis (architecture, IPC API, signing) |
 | [decompiled/](decompiled/) | Full reverse-engineering output (jadx, apktool, metadata) |
 | [iocs/SHA256SUMS.txt](iocs/SHA256SUMS.txt) | Sample hashes |
-| [samples/](samples/) | Original APK, honeypot variant, sealed archive |
+| [samples/](samples/) | Original APK, sealed archive |
 
 ### Hashes
 
 ```
 b693855c1e36cca582284f7f4582a3296ec5df4b4b8edfbfb4a085747feade4d  system_service_ORIGINAL_MALWARE.apk
-82a32cada3bfd073f35c6fa0251eaf31b055565b282cc02b50cac73355a1ec38  system_service_HONEYPOT_VARIANT.apk
 ```
 
 Certificate SHA256: `B6EDE6C79E7CCA3CA53121FC5F92ADD6F68559FA91113383A5A4531171CF92E3`  
@@ -54,10 +53,6 @@ Signer CN: `uNOewfBz`, O=Android, C=US (self-signed, from 2026-09-23)
 | `audio_start` / `audio_stop` | Microphone recording |
 | `overlay_show` | Full-screen overlay / black screen |
 | (others) | Foreground service, activity helpers |
-
-### Honeypot variant
-
-`system_service_HONEYPOT_VARIANT.apk` — receive-only patch: logs IPC, returns `{success=true}`, does not run payloads.
 
 ### Use
 
@@ -93,13 +88,12 @@ Analysis text: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 | [analysis/TECHNICAL_ANALYSIS.md](analysis/TECHNICAL_ANALYSIS.md) | 静态分析（架构、IPC 接口、签名） |
 | [decompiled/](decompiled/) | 完整逆向输出（jadx、apktool、元数据） |
 | [iocs/SHA256SUMS.txt](iocs/SHA256SUMS.txt) | 样本哈希 |
-| [samples/](samples/) | 原始 APK、蜜罐变体、密封压缩包 |
+| [samples/](samples/) | 原始 APK、密封压缩包 |
 
 ### 哈希
 
 ```
 b693855c1e36cca582284f7f4582a3296ec5df4b4b8edfbfb4a085747feade4d  system_service_ORIGINAL_MALWARE.apk
-82a32cada3bfd073f35c6fa0251eaf31b055565b282cc02b50cac73355a1ec38  system_service_HONEYPOT_VARIANT.apk
 ```
 
 证书 SHA256：`B6EDE6C79E7CCA3CA53121FC5F92ADD6F68559FA91113383A5A4531171CF92E3`  
@@ -117,10 +111,6 @@ b693855c1e36cca582284f7f4582a3296ec5df4b4b8edfbfb4a085747feade4d  system_service
 | `audio_start` / `audio_stop` | 麦克风录音 |
 | `overlay_show` | 全屏悬浮 / 黑屏 |
 | （其他） | 前台服务保活、Activity 辅助 |
-
-### 蜜罐变体
-
-`system_service_HONEYPOT_VARIANT.apk` 为**仅接收**补丁版：记录 IPC 调用并返回 `{success=true}`，不执行恶意逻辑。
 
 ### 用途
 

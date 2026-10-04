@@ -73,10 +73,6 @@ Responses often use Bundle keys: `status=ok`, `success`, `jpeg`, `error`.
 2. **Caller ID**: exported provider IPC exposes **caller uid/package** when logged.
 3. **Network**: no in-APK C2 ≠ benign; controller may be another app or off-device.
 
-### Honeypot variant
-
-Patched APK: `call()` logs only, returns success, same package/authority. Lab use only.
-
 ---
 
 <a id="中文"></a>
@@ -148,6 +144,3 @@ getContentResolver().call(
 2. **调用方识别**：对已导出 Provider 的 IPC 可记录**调用方 uid/包名**。
 3. **网络**：APK 内无 C2 不等于安全；控制端可能在其他 App 或设备外。
 
-### 蜜罐变体
-
-补丁版 `call()` 仅记录日志并返回成功，包名与 authority 不变；仅限隔离实验环境。
