@@ -1,0 +1,25 @@
+﻿签名者 #1:
+
+Certificate #1:
+所有者: CN=uNOewfBz, O=Android, C=US
+发布者: CN=uNOewfBz, O=Android, C=US
+序列号: 5a35ee2d517bae77
+生效时间: Wed Sep 23 00:17:49 CST 2026, 失效时间: Sun Feb 08 00:17:49 CST 2054
+证书指纹:
+	 SHA1: D8:99:DC:F2:39:FE:AC:97:EB:AD:10:7A:B3:C9:9B:8C:64:68:39:74
+	 SHA256: B6:ED:E6:C7:9E:7C:CA:3C:A5:31:21:FC:5F:92:AD:D6:F6:85:59:FA:91:11:33:83:A5:A4:53:11:71:CF:92:E3
+签名算法名称: SHA384withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: F3 A1 77 5C 79 73 7A 05   DA 2E 09 99 B8 BA DA 60  ..w\ysz........`
+0010: 9C 47 4A 99                                        .GJ.
+]
+]
+
+

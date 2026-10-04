@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Created-By: 21.0.11 (Homebrew)
+
+Name: AndroidManifest.xml
+SHA-256-Digest: DhprgsrikgZrGo1+Y3UDoLCj9mCuCljeO/1dtSBBjGw=
+
+Name: classes.dex
+SHA-256-Digest: XyAFMphAfIpTQmbExV3wqfOcWgU0zL5FHQsbk4fCMFo=
+
+Name: res/xml/device_admin.xml
+SHA-256-Digest: V8Sz+IARCaN+s9xvlhMOcjoI6d/KbULPkPWA4HptJp4=
+
+Name: resources.arsc
+SHA-256-Digest: blDXeTkCG5UBiQtXL1DgQ8k3iZIevGT+LyCVKYIJNok=
+

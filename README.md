@@ -28,6 +28,7 @@ Small sideloaded APK (~33 KB) with an **exported** `BridgeProvider`. Other apps 
 | Path | Description |
 |------|-------------|
 | [analysis/TECHNICAL_ANALYSIS.md](analysis/TECHNICAL_ANALYSIS.md) | Static analysis (architecture, IPC API, signing) |
+| [decompiled/](decompiled/) | Full reverse-engineering output (jadx, apktool, metadata) |
 | [iocs/SHA256SUMS.txt](iocs/SHA256SUMS.txt) | Sample hashes |
 | [samples/](samples/) | Original APK, honeypot variant, sealed archive |
 
@@ -90,6 +91,7 @@ Analysis text: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 | 路径 | 说明 |
 |------|------|
 | [analysis/TECHNICAL_ANALYSIS.md](analysis/TECHNICAL_ANALYSIS.md) | 静态分析（架构、IPC 接口、签名） |
+| [decompiled/](decompiled/) | 完整逆向输出（jadx、apktool、元数据） |
 | [iocs/SHA256SUMS.txt](iocs/SHA256SUMS.txt) | 样本哈希 |
 | [samples/](samples/) | 原始 APK、蜜罐变体、密封压缩包 |
 
