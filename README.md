@@ -1,28 +1,28 @@
 # Android Bridge Backdoor: `com.servers.ozzbzk` (Research Sample)
 
 > **WARNING — LIVE MALWARE**  
-> This repository contains **functional Android malware** for **security research and defensive analysis only**.  
-> **Do not install** these APKs on any device. Use isolated lab environments only.
+> Functional Android malware sample for **security research and defensive analysis only**.  
+> **Do not install** on any device. Use isolated lab environments only.
 
 ## Summary
 
 | Field | Value |
 |-------|--------|
 | Package | `com.servers.ozzbzk` |
-| App label | System Service (fake) |
-| Type | Local IPC bridge implant (exported ContentProvider) |
+| App label | System Service (disguise) |
+| Type | Local IPC bridge (exported ContentProvider) |
 | IPC authority | `content://com.servers.ozzbzk.bridge` |
-| Network C2 in APK | **None** (controller is external) |
+| Network C2 in APK | **None observed** (external controller required) |
 
-The sample poses as a system service and exposes a **exported** `BridgeProvider` that accepts `ContentResolver.call()` commands from other apps on the same device. A separate controller (another app, ADB, or instrumentation) drives surveillance/phishing actions through this bridge.
+Small sideloaded APK (~33 KB) that registers an **exported** `BridgeProvider`. Other apps on the same device invoke `ContentResolver.call()` to trigger surveillance, overlay, and phishing helpers. The bridge itself does not embed a remote C2 URL.
 
-## Files
+## Repository layout
 
 | Path | Description |
 |------|-------------|
-| [analysis/attribution_REPORT.md](analysis/attribution_REPORT.md) | Delivery chain & attribution notes (device-local investigation) |
+| [analysis/TECHNICAL_ANALYSIS.md](analysis/TECHNICAL_ANALYSIS.md) | Static analysis (architecture, IPC API, signing) |
 | [iocs/SHA256SUMS.txt](iocs/SHA256SUMS.txt) | Sample hashes |
-| [samples/](samples/) | Original APK + passive honeypot variant + sealed archive |
+| [samples/](samples/) | Original APK, passive honeypot variant, sealed archive |
 
 ## Hashes
 
@@ -32,42 +32,28 @@ b693855c1e36cca582284f7f4582a3296ec5df4b4b8edfbfb4a085747feade4d  system_service
 ```
 
 Certificate SHA256: `B6EDE6C79E7CCA3CA53121FC5F92ADD6F68559FA91113383A5A4531171CF92E3`  
-Signer CN: `uNOewfBz`, O=Android, C=US (self-signed, dated 2026-09-23)
+Signer CN: `uNOewfBz`, O=Android, C=US (self-signed, valid from 2026-09-23)
 
-## Bridge command surface (static analysis)
+## IPC command surface (static analysis)
 
-Invoked via `content://com.servers.ozzbzk.bridge` → `BridgeProvider.call(method, arg, extras)`:
+Endpoint: `content://com.servers.ozzbzk.bridge` → `BridgeProvider.call(method, arg, extras)`
 
-| Method (observed) | Capability |
-|-------------------|------------|
-| `ping` | Health check / version |
-| `phish_launch` | Launch phishing overlay / target app flow |
-| `camera_capture` | Silent camera capture (incl. Camera2 / proxy paths) |
+| Method | Capability |
+|--------|------------|
+| `ping` | Health / version check |
+| `phish_launch` | Phishing overlay flow (HTML / target package) |
+| `camera_capture` | Camera capture (Camera2 / proxy paths) |
 | `audio_start` / `audio_stop` | Microphone recording |
 | `overlay_show` | Full-screen overlay / black screen |
-| (others) | Foreground service bootstrap, activity injection helpers |
-
-**Attribution model:** the bridge logs **caller uid/pid/package** on each IPC call — useful for identifying the controller app when it invokes the provider.
-
-## Delivery (investigated device)
-
-Observed install path: **social IM file share** → user confirms package installer → APK installed as sideload. No in-APK hardcoded download URL for the bridge itself.
+| (others) | Foreground service bootstrap, activity helpers |
 
 ## Honeypot variant
 
-`system_service_HONEYPOT_VARIANT.apk` is a **receive-only** patched build: all `call()` handlers log the caller and return `{success=true}` without executing malicious actions. Included for defensive research / attribution testing.
+`system_service_HONEYPOT_VARIANT.apk` is a **receive-only** patched build: handlers log inbound IPC and return `{success=true}` without executing payloads. Useful for lab detection / caller logging experiments.
 
-## Legal / ethical use
+## Use
 
-- Provided **as-is** for malware analysis, detection rule development, and education.
-- **Not** for deployment, evasion research, or unauthorized access.
-- Researchers: submit hashes to [MalwareBazaar](https://bazaar.abuse.ch/) / VirusTotal for broader coverage.
+- Malware analysis, YARA/Sigma rules, AV testing, education.
+- **Not** for deployment, evasion, or unauthorized access.
 
-## License
-
-Analysis text and documentation: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).  
-Malware binaries: no license granted for use beyond analysis in controlled environments.
-
----
-
-*Published for public defensive research — 2026-10-04*
+Analysis text: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Binaries: no license beyond controlled analysis.
